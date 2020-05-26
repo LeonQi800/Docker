@@ -1,4 +1,4 @@
-FROM node:12.16.2
-RUN mkdir /src
-COPY hello.js /src
-CMD ["node", "/src/hello.js"]
+FROM node:12.16.2-alpine
+RUN mkdir /webapp
+COPY webapp /webapp
+CMD ["node", "/webpapp/hello.js"]
