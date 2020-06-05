@@ -1,4 +1,11 @@
-FROM node:12.16.2-alpine
-RUN mkdir /webapp
-COPY webapp /webapp
-CMD ["node", "/webpapp/hello.js"]
+FROM tomcat:9
+
+MAINTAINER Leon Qi "https://github.com/LeonQi800/Docker"
+
+# WORKDIR /usr/local/tomcat/webapps/
+
+# COPY ./webapp .
+
+CMD ["catalina.sh", "run"]
+
+# EXPOSE 8448

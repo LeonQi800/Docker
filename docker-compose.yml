@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  lio-tomcat:
+    restart: always
+    image: tomcat:9
+    container_name: lio-tomcat
+    ports: 
+      - 8848:8080
+    volumes: 
+      - /Users/leon/Documents/MyFolder/Docker/webapp:/usr/local/tomcat/webapps
+
+  lio-mysql:
+    restart: always
+    image: mysql:8.0
+    container_name: lio-mysql
+    ports: 
+      - 6060:3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: test321
+      MYSQL_USER: dev2020
+      MYSQL_PASSWORD: dev2020
+      MYSQL_DATABASE: lioenix_db
+    # command:
+    #   -- max_allowed_packet=128M
+    volumes: 
+      - /Users/leon/Documents/MyFolder/Docker/docker-config/mysql/data:/var/lib/mysql
