@@ -19,6 +19,21 @@ services:
     #   -- max_allowed_packet=128M
     volumes: 
       - ./data/mysql/data:/var/lib/mysql
+
+  lio-mongo:
+    restart: always
+    image: mongo:4.2.8
+    container_name: lio-mongo
+    networks: 
+      - mongo-network
+    ports: 
+      - 27018:27017
+    environment: 
+      MONGO_INITDB_ROOT_PASSWORD: test321
+      MONGO_INITDB_ROOT_USERNAME: root
+      TZ: 'Asia/Shanghai'
+    volumes: 
+      - ./data/mongo/data:/data/db
     
   # lio-tomcat:
   #   restart: always
@@ -53,6 +68,11 @@ services:
 networks:
   tomcat-network:
     name: tom-net
+    driver: bridge
   sql-network:
     name: sql-net
+    driver: bridge
+  mongo-network:
+    name: mongo-net
+    driver: bridge
     
